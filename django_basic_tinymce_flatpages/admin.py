@@ -7,7 +7,7 @@ from django.utils.module_loading import import_string
 FLATPAGE_WIDGET = getattr(settings, 'FLATPAGE_WIDGET', 'tinymce.widgets.TinyMCE')
 
 FLATPAGE_WIDGET_KWARGS = getattr(settings, 'FLATPAGE_WIDGET_KWARGS',
-                                 default={'attrs': {'cols': 100, 'rows': 15}})
+                                 {'attrs': {'cols': 100, 'rows': 15}})
 
 
 class PageForm(FlatpageForm):
