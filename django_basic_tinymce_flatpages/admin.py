@@ -17,6 +17,7 @@ class PageForm(FlatpageForm):
         widgets = {
             'content': import_string(FLATPAGE_WIDGET)(**FLATPAGE_WIDGET_KWARGS),
         }
+        fields = '__all__'
 
 
 class PageAdmin(FlatPageAdmin):
