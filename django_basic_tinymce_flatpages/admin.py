@@ -1,6 +1,13 @@
+from django.core import settings
+from django.contrib import admin
 from django.contrib.flatpages.admin import FlatpageForm, FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
-from tinymce.widgets import TinyMCE
+from django.utils.module_loading import import_string
+
+FLATPAGE_WIDGET = getattr(settings, 'FLATPAGE_WIDGET', 'tinymce.widgets.TinyMCE')
+
+FLATPAGE_WIDGET_KWARGS = getattr(settings, 'FLATPAGE_WIDGET_KWARGS',
+                                 default={'attrs': {'cols': 100, 'rows': 15}})
 
 
 class PageForm(FlatpageForm):
@@ -8,7 +15,7 @@ class PageForm(FlatpageForm):
     class Meta:
         model = FlatPage
         widgets = {
-            'content' : TinyMCE(attrs={'cols': 100, 'rows': 15}),
+            'content': import_string(FLATPAGE_WIDGET)(**FLATPAGE_WIDGET_KWARGS),
         }
 
 
