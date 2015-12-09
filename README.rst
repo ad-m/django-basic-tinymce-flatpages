@@ -22,14 +22,16 @@ Install django-basic-tinymce-flatpages::
 
     pip install django-basic-tinymce-flatpages
 
-Then use it in a project::
+Then use it in a project by settings:
 
-    import django_basic_tinymce_flatpages
+    FLATPAGE_WIDGET = 'tinymce.widgets.TinyMCE'
+    FLATPAGE_WIDGET_KWARGS = {'attrs': {'cols': 100, 'rows': 15}}
+
 
 Features
 --------
 
-* TODO
+* swappable widget
 
 Running Tests
 --------------
